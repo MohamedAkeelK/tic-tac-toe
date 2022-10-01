@@ -1,24 +1,30 @@
 let turn = 1;
 
-let gameBoard = document.querySelector(".game-board");
+// let gameBoard = document.querySelector(".game-board");
 let resetBtn = document.querySelector(".reset-btn");
 let boxes = document.querySelectorAll(".box");
+let p_turn = document.querySelector(".p-turn");
 
-gameBoard.addEventListener("click", (e) => {
-  if (
-    e.target.classList.contains("p1-clicked") ||
-    e.target.classList.contains("p2-clicked")
-  ) {
-    return;
-  } else {
-    if (turn % 2 === 0) {
-      e.target.classList.add("p1-clicked");
+for (let i = 0; i < boxes.length; i++) {
+  boxes[i].addEventListener("click", () => {
+    console.log("clicked");
+    if (
+      boxes[i].classList.contains("p1-clicked") ||
+      boxes[i].classList.contains("p2-clicked")
+    ) {
+      return;
     } else {
-      e.target.classList.add("p2-clicked");
+      if (turn % 2 === 0) {
+        boxes[i].classList.add("p1-clicked");
+        p_turn.innerText = "Player Turn: Blue";
+      } else {
+        boxes[i].classList.add("p2-clicked");
+        p_turn.innerText = "Player Turn: Red";
+      }
+      turn++;
     }
-    turn++;
-  }
-});
+  });
+}
 
 resetBtn.addEventListener("click", (e) => {
   // get all boxes and set the style to

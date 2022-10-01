@@ -1,3 +1,10 @@
+.ctr {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+}
+
 .game-board
 {
 	width: 500px;
@@ -7,6 +14,7 @@
   border-radius: 10px; 
 	display: grid;
 	grid-template: repeat(3, 1fr) /  repeat(3, 1fr);;
+  user-select: none;
 }
 
 .box
@@ -25,6 +33,10 @@
 }
 .p2-clicked {
   background-color: blue;
+}
+
+.p-turn {
+  text-align: center;
 }
 
 .reset-btn-ctr {
