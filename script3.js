@@ -11,7 +11,7 @@ class TicTacToe {
     this.x = "X";
     this.o = "O";
     this.currentMark = this.x;
-    this.message;
+    this.message = "";
     this.handleCellClick();
     this.handleMessage();
     this.WinningCombos = [
@@ -44,12 +44,25 @@ class TicTacToe {
         }
       });
     });
+
+    resetBtn.addEventListener("click", () => {
+      console.log("clicked");
+      this.local_board = ["", "", "", "", "", "", "", "", ""];
+      this.winner = false;
+      this.winning_mark = "";
+      this.currentMark = this.x;
+      message.innerText = "";
+      for (let i = 0; i < cells.length; i++) {
+        cells[i].innerText = "";
+      }
+      this.handleMessage();
+    });
   }
   placeMark(target) {
     this.local_board[target.dataset.cell] = this.currentMark;
     target.innerText = this.currentMark;
   }
-  changePlayer() {  
+  changePlayer() {
     return this.currentMark === this.x
       ? (this.currentMark = this.o)
       : (this.currentMark = this.x);
@@ -60,7 +73,6 @@ class TicTacToe {
       let a = this.local_board[win[0]];
       let b = this.local_board[win[1]];
       let c = this.local_board[win[2]];
-      console.log("a: ", a, "b: ", b, c, "c: ");
       if (a === "" || b === "" || c === "") {
         continue;
       }
