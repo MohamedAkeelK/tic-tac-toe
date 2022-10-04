@@ -1,19 +1,12 @@
-.ctr {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
-}
-
-.game-board
+.board
 {
-	width: 500px;
-	height: 500px;
+	width: 400px;
+	height: 400px;
 	margin: 0 auto;
-  border: 5px solid #2c3e50;
+  /* border: 5px solid #2c3e50; */
   border-radius: 10px; 
 	display: grid;
-	grid-template: repeat(3, 1fr) /  repeat(3, 1fr);;
+	grid-template: repeat(3, 1fr) /  repeat(3, 1fr);
   user-select: none;
 }
 
@@ -28,14 +21,55 @@
   align-items: center;
 }
 
-.p1-clicked {
+.box:hover {
+  cursor: pointer;
+}
+
+.box:nth-child(1) {
+  border-top: none;
+  border-left: none;
+}
+
+.box:nth-child(2) {
+  border-top: none;
+}
+
+.box:nth-child(3) {
+  border-top: none;
+  border-right: none;
+}
+
+.box:nth-child(4) {
+  border-left: none;
+}
+
+.box:nth-child(6) {
+  border-right: none;
+}
+
+.box:nth-child(7) {
+  border-left: none;
+  border-bottom: none;
+}
+
+.box:nth-child(8) {
+  border-bottom: none;
+}
+
+.box:nth-child(9) {
+  border-right: none;
+  border-bottom: none;
+
+}
+
+.x {
   background-color: red;
 }
-.p2-clicked {
+.o {
   background-color: blue;
 }
 
-.p-turn {
+.current-mark {
   text-align: center;
 }
 
