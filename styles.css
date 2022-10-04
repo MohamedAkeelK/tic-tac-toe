@@ -2,7 +2,7 @@
 {
 	width: 400px;
 	height: 400px;
-	margin: 0 auto;
+	margin: 40px auto;
   /* border: 5px solid #2c3e50; */
   border-radius: 10px; 
 	display: grid;
@@ -69,8 +69,11 @@
   background-color: blue;
 }
 
-.current-mark {
+.msg-ctr {
   text-align: center;
+}
+.msg {
+  padding-top: 30px;
 }
 
 .reset-btn-ctr {

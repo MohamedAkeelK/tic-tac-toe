@@ -1,6 +1,7 @@
 let board = document.querySelector(".board");
 let cells = document.querySelectorAll(".box");
-// console.log(board);
+let message = document.querySelector(".msg");
+let resetBtn = document.querySelector(".reset-btn");
 
 class TicTacToe {
   constructor() {
@@ -10,7 +11,9 @@ class TicTacToe {
     this.x = "X";
     this.o = "O";
     this.currentMark = this.x;
-    this.addListeners();
+    this.message;
+    this.handleCellClick();
+    this.handleMessage();
     this.WinningCombos = [
       [0, 1, 2],
       [3, 4, 5],
@@ -22,11 +25,21 @@ class TicTacToe {
       [0, 4, 8],
     ];
   }
-  addListeners() {
+  handleMessage() {
+    message.innerText = `its ${this.currentMark}'s Turn`;
+  }
+
+  handleWinningMessage(winner) {
+    message.innerText = `${winner} Wins!`;
+  }
+
+  handleCellClick() {
     cells.forEach((cell) => {
       cell.addEventListener("click", (e) => {
-        if (e.target.innerText === "") {
+        if (e.target.innerText === "" && this.winner === false) {
           this.placeMark(e.target);
+          this.handleMessage();
+          this.checkWinner();
           this.changePlayer();
         }
       });
@@ -35,9 +48,8 @@ class TicTacToe {
   placeMark(target) {
     this.local_board[target.dataset.cell] = this.currentMark;
     target.innerText = this.currentMark;
-    this.checkWinner();
   }
-  changePlayer() {
+  changePlayer() {  
     return this.currentMark === this.x
       ? (this.currentMark = this.o)
       : (this.currentMark = this.x);
@@ -55,10 +67,12 @@ class TicTacToe {
       if (a === b && b === c) {
         this.winning_mark = this.currentMark;
         this.winner = true;
+        this.handleWinningMessage(this.currentMark);
         break;
       }
     }
   }
 }
+
 let game1 = new TicTacToe();
 console.log(game1);
